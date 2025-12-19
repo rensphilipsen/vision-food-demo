@@ -3,7 +3,7 @@ import vision from '@google-cloud/vision';
 
 // ✅ Ensure Node runtime on Vercel
 export const config = {
-	runtime: 'nodejs'
+	runtime: 'nodejs24.x'
 };
 
 function createVisionClient() {
@@ -21,9 +21,9 @@ function createVisionClient() {
 	});
 }
 
-const client = createVisionClient();
-
 export async function POST({ request }) {
+	const client = createVisionClient();
+	
 	const form = await request.formData();
 	const file = form.get('image');
 
